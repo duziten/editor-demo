@@ -10,16 +10,12 @@ import './App.css';
 
 function App() {
   const [text, setText] = useState('');
-  const labelBlock = {
-    text: '沟通内容：',
-    className: '',
-  };
   const contentBlock = {
     className: '',
     height: 180,
-    // value: '123213${user.$mp_wx6228eb2adfba3ab4_qr_scene}',
-    value:
-      '${convertShow(user.$mp_wx6228eb2adfba3ab4_qr_scene_str.$code.$acc,\'{"1231":"213"}\')}123131${mask(event.$AppClick.$ip,1,1,\'*\')}程度还差${user.$mp_wx6228eb2adfba3ab4_qr_scene}',
+    value: '',
+    // value:
+    //   '${convertShow(user.$mp_wx6228eb2adfba3ab4_qr_scene_str.$code.$acc,\'{"1231":"213"}\')}123131${mask(event.$AppClick.$ip,1,1,\'*\')}程度还差${user.$mp_wx6228eb2adfba3ab4_qr_scene}',
     placeholder: '请输入',
     onChange: (value) => {
       setText(value);
@@ -27,20 +23,9 @@ function App() {
     },
     maxLength: 10,
   };
-  const urls = {
-    userUrl: '/api/property/user/properties',
-    eventUrl:
-      '/api/v2/sf/events/all?project=default&cache=false&invisible=false&check_permission=false',
-    event2Url: '/api/event/properties?events=',
-    productUrl:
-      '/api/v2/sf/items/type?project=default&cache=false&invisible=false&check_permission=false',
-    product2Url: '/api/v2/sf/items/properties?project=default&item_type=',
-    whiteUrl:
-      'http://10.120.202.72:8115/sf/whiteTag/getWhiteTagList?project=production&token=$f9748a249d55b1949c01f0f098a99a92',
-  };
 
   const doc = `
-property-template-editor 组件（umd）:
+property-template-editor 组件 \`umd\`, 通过 \`zip\` 包提供:
 
 ~~~js
 // 文件结构
@@ -58,11 +43,6 @@ import 'property-template-editor/index.css';
 const Demo = () => {
   const [text, setText] = useState('');
 
-  // label 配置
-  const labelBlock = {
-    text: '沟通内容：',
-    className: '', // label class
-  };
   // 编辑器配置
   const contentBlock = {
     height: 180,
@@ -74,23 +54,11 @@ const Demo = () => {
     },
   };
 
-  // 实际接口为准
-  const urls = {
-    user: '',
-    event: '',
-    event2: '',
-    product: '',
-    product2: '',
-    white: '',
-    white2: '',
-  };
-
   return (
     <Editor
-      labelBlock={labelBlock}
       contentBlock={contentBlock}
       tools={['user', 'event', 'product', 'white']}
-      urls={urls} // 属性接口地址
+      proxy={} // 代理地址
       mock // 调试阶段开启 mock，不使用 urls 接口
     />
   );
@@ -101,17 +69,12 @@ const Demo = () => {
 
 | 属性名称 | 类型 | 说明 | 默认值|
 | - | - | - | - |
-| labelBlock | labelBlock | label 配置 | 见 labelBlock |
 | contentBlock | contentBlock | 编辑器配置 | 见 contentBlock |
 | tools | string[] | 支持插入属性的类型 | ['user', 'event', 'product', 'white'] |
-| urls | Object | 获取属性 api 路径 | - |
+| proxy | string | 代理 url 路径，最终请求 \`url\`：proxy + ?url={realUrl} | - |
 | mock | boolean | api 未就绪启用 mock | false |
 
-#### labelBlock：
-| 属性名称 | 类型 | 说明 | 默认值|
-| - | - | - | - |
-| text | string | label 文案 | '内容' |
-| className | string | 自定义 label 样式名称 | - |
+注意：mock 仅调试阶段使用，开发阶段传入 proxy 即可，mock 与 proxy 互斥，勿同时使用
 
 #### contentBlock
 | 属性名称 | 类型 | 说明 | 默认值|
@@ -127,12 +90,8 @@ const Demo = () => {
       <h2>属性编辑器演示 & 使用文档：</h2>
       <div style={{ width: 900, marginTop: 20 }}>
         <Editor
-          style={{ width: 500 }}
-          readonly={false}
-          labelBlock={labelBlock}
           contentBlock={contentBlock}
           tools={['user', 'event', 'product', 'white']}
-          urls={urls}
           mock
         />
       </div>

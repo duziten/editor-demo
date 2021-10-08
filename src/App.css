@@ -18,3 +18,11 @@ td {
 table tr:nth-child(2n) {
   background: #f6f8fa;
 }
+code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  color: #0366d6;
+}
