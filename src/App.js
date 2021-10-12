@@ -73,6 +73,8 @@ const Demo = () => {
 | tools | string[] | 支持插入属性的类型 | ['user', 'event', 'product', 'white'] |
 | proxy | string | 代理 url 路径，最终请求 \`url\`：proxy + ?url={realUrl} | - |
 | mock | boolean | api 未就绪启用 mock | false |
+| project | string | 当前项目 | default |
+| readonly | boolean | 自读模式 | false |
 
 注意：mock 仅调试阶段使用，开发阶段传入 proxy 即可，mock 与 proxy 互斥，勿同时使用
 
@@ -93,6 +95,8 @@ const Demo = () => {
           contentBlock={contentBlock}
           tools={['user', 'event', 'product', 'white']}
           mock
+          project="default"
+          readonly={false}
         />
       </div>
       <h3 style={{ margin: '20px 0' }}>编辑区获取 value: </h3>
