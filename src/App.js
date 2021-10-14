@@ -3,11 +3,11 @@ import Editor from 'property-template-editor';
 // import Editor from './dist';
 import Markdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import remarkGfm from 'remark-gfm'
+import remarkGfm from 'remark-gfm';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 // import './dist/index.css';
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.css';
 import './App.css';
 
 function App() {
@@ -91,42 +91,44 @@ const Demo = () => {
 
   return (
     <div className="App">
-      <h2>属性编辑器演示 & 使用文档：</h2>
-      <div style={{ width: 900, marginTop: 20 }}>
-        <Editor
-          contentBlock={contentBlock}
-          tools={['user', 'event', 'product', 'white']}
-          mock
-          project="default"
-          readonly={false}
-        />
-      </div>
-      <h3 style={{ margin: '20px 0' }}>编辑区获取 value: </h3>
-      <textarea disabled style={{ width: 900, height: 300 }} value={text} />
-      <h3 style={{ margin: '20px 0' }}>代码示例: </h3>
-      <div style={{ width: 900 }}>
-        <Markdown
-          children={doc}
-          remarkPlugins={[remarkGfm]}
-          components={{
-            code({ node, inline, className, children, ...props }) {
-              const match = /language-(\w+)/.exec(className || '');
-              return !inline && match ? (
-                <SyntaxHighlighter
-                  children={String(children).replace(/\n$/, '')}
-                  style={atomDark}
-                  language={match[1]}
-                  PreTag="div"
-                  {...props}
-                />
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
-            },
-          }}
-        />
+      <div style={{ width: 1000, margin: '0 auto' }}>
+        <h2>属性编辑器演示 & 使用文档：</h2>
+        <div style={{ width: 900, marginTop: 20 }}>
+          <Editor
+            contentBlock={contentBlock}
+            tools={['user', 'event', 'product', 'white']}
+            mock
+            project="default"
+            readonly={false}
+          />
+        </div>
+        <h3 style={{ margin: '20px 0' }}>编辑区获取 value: </h3>
+        <textarea disabled style={{ width: 900, height: 300 }} value={text} />
+        <h3 style={{ margin: '20px 0' }}>代码示例: </h3>
+        <div style={{ width: 900 }}>
+          <Markdown
+            children={doc}
+            remarkPlugins={[remarkGfm]}
+            components={{
+              code({ node, inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || '');
+                return !inline && match ? (
+                  <SyntaxHighlighter
+                    children={String(children).replace(/\n$/, '')}
+                    style={atomDark}
+                    language={match[1]}
+                    PreTag="div"
+                    {...props}
+                  />
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              },
+            }}
+          />
+        </div>
       </div>
     </div>
   );
