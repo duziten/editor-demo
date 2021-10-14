@@ -76,7 +76,7 @@ const Demo = () => {
 | proxy | string | 代理 url 路径，最终请求 \`url\`：proxy + ?url={realUrl} | - |
 | mock | boolean | api 未就绪启用 mock | false |
 | project | string | 当前项目 | default |
-| readonly | boolean | 自读模式 | false |
+| readonly | boolean | 只读模式 | false |
 
 注意：mock 仅调试阶段使用，开发阶段传入 proxy 即可，mock 与 proxy 互斥，勿同时使用
 
