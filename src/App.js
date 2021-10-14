@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import Editor from 'property-template-editor';
+// import Editor from 'property-template-editor';
+import Editor from './dist';
 import Markdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import remarkGfm from 'remark-gfm'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import 'property-template-editor/dist/index.css';
+// import './dist/index.css';
+import 'antd/dist/antd.css'
 import './App.css';
 
 function App() {
