@@ -1,6 +1,6 @@
 import { useState } from 'react';
-// import Editor from 'property-template-editor';
-import Editor from './dist';
+import Editor from 'property-template-editor';
+// import Editor from './dist';
 import Markdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import remarkGfm from 'remark-gfm'
