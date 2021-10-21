@@ -96,7 +96,7 @@ const Demo = () => {
         <div style={{ width: 900, marginTop: 20 }}>
           <Editor
             contentBlock={contentBlock}
-            tools={['user', 'event', 'product', 'white']}
+            tools={['user', 'event', 'product', 'white', 'tag']}
             mock
             project="default"
             readonly={false}
